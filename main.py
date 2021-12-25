@@ -1,5 +1,6 @@
 import pygame
 import sys
+import math
 
 # initialize the pygame
 
@@ -13,6 +14,20 @@ my_font2 = pygame.font.SysFont('Comic Sans MS', 25)
 user_text = ''
 user_text2 = ''
 user_text3 = ''
+force_result = ''
+acc_result = ''
+time_result = ''
+show1 = False
+show2 = False
+show3 = False
+# defining variables
+acceleration = 0
+imass = 0
+angle = 0
+ilength = 0
+sin0 = 0
+time = 0
+force = 0
 # creating rectangle1
 input_rect = pygame.Rect(680, 60, 100, 32)
 color_active = pygame.Color('blue4')
@@ -65,6 +80,11 @@ while running:
             if active:
                 if event.key == pygame.K_BACKSPACE:
                     user_text = user_text[:-1]
+                elif event.key == pygame.K_RETURN:
+                    mass = user_text
+                    # converting str into int
+                    imass += int(mass)
+
                 else:
                     user_text += event.unicode
 
@@ -78,6 +98,15 @@ while running:
             if active2:
                 if event.key == pygame.K_BACKSPACE:
                     user_text2 = user_text2[:-1]
+                elif event.key == pygame.K_RETURN:
+                    angle = user_text2
+                    iangle = int(angle)
+                    sinp = math.sin(math.radians(iangle))
+                    force = imass * 9.8 * sinp
+                    iforce = round(force, 2)
+                    force_result = my_font2.render("{}".format(iforce), True, (0, 100, 0))
+                    show1 = True
+
                 else:
                     user_text2 += event.unicode
 
@@ -91,6 +120,19 @@ while running:
             if active3:
                 if event.key == pygame.K_BACKSPACE:
                     user_text3 = user_text3[:-1]
+                elif event.key == pygame.K_RETURN:
+                    length = user_text3
+                    ilength = int(length)
+                    acceleration = force / imass
+                    iacceleration = round(acceleration, 2)
+                    acc_result = my_font2.render("{}".format(iacceleration), True, (0, 100, 0))
+                    show2 = True
+                    # t= t*t
+                    t = 2 * ilength / acceleration
+                    time = math.sqrt(t)
+                    itime = round(time, 2)
+                    time_result = my_font2.render("{}".format(itime), True, (0, 100, 0))
+                    show3 = True
                 else:
                     user_text3 += event.unicode
 
@@ -145,6 +187,13 @@ while running:
     screen.blit(acc_heading, (625, 315))
     time_heading = my_font2.render('time:', True, (0, 0, 0))
     screen.blit(time_heading, (620, 365))
+    # print results
+    if show1:
+        screen.blit(force_result, (680, 265))
+    if show2:
+        screen.blit(acc_result, (680, 315))
+    if show3:
+        screen.blit(time_result, (680, 365))
 
     #  updating screen
     pygame.display.update()

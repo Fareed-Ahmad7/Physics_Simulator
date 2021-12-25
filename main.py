@@ -84,7 +84,7 @@ while running:
                 elif event.key == pygame.K_RETURN:
                     mass = user_text
                     # converting str into int
-                    imass += int(mass)
+                    imass = int(mass)
                     if imass == 0:
                         send_message1 = my_font2.render(msg1, True, (255, 0, 0))
                         screen.blit(send_message1, (0, 0))
@@ -175,21 +175,21 @@ while running:
     # inputs:
     input_heading = my_font.render('Input:', True, (0, 0, 0))
     screen.blit(input_heading, (650, 10))
-    mass_heading = base_font.render('mass:', True, (0, 0, 0))
-    screen.blit(mass_heading, (610, 65))
-    Angle_heading = base_font.render('angle:', True, (0, 0, 0))
-    screen.blit(Angle_heading, (605, 115))
-    Length_heading = base_font.render('length:', True, (0, 0, 0))
-    screen.blit(Length_heading, (595, 165))
+    mass_heading = base_font.render('mass(kg):', True, (0, 0, 0))
+    screen.blit(mass_heading, (565, 65))
+    Angle_heading = base_font.render('angle(θ):', True, (0, 0, 0))
+    screen.blit(Angle_heading, (580, 115))
+    Length_heading = base_font.render('length(m):', True, (0, 0, 0))
+    screen.blit(Length_heading, (560, 165))
     # Result:
     Result_heading = my_font.render('Result:', True, (0, 0, 0))
     screen.blit(Result_heading, (650, 215))
-    force_heading = my_font2.render('force:', True, (0, 0, 0))
-    screen.blit(force_heading, (605, 265))
-    acc_heading = my_font2.render('Acc:', True, (0, 0, 0))
-    screen.blit(acc_heading, (625, 315))
-    time_heading = my_font2.render('time:', True, (0, 0, 0))
-    screen.blit(time_heading, (620, 365))
+    force_heading = my_font2.render('force(N):', True, (0, 0, 0))
+    screen.blit(force_heading, (560, 265))
+    acc_heading = my_font2.render('Acc(m/s²):', True, (0, 0, 0))
+    screen.blit(acc_heading, (540, 315))
+    time_heading = my_font2.render('time(s):', True, (0, 0, 0))
+    screen.blit(time_heading, (580, 365))
     # print results
     if show1:
         screen.blit(force_result, (680, 265))

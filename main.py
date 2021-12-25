@@ -8,25 +8,27 @@ clock = pygame.time.Clock()
 # creating screen
 screen = pygame.display.set_mode((800, 600))
 base_font = pygame.font.Font(None, 32)
+my_font = pygame.font.SysFont('Comic Sans MS', 30)
+my_font2 = pygame.font.SysFont('Comic Sans MS', 25)
 user_text = ''
 user_text2 = ''
 user_text3 = ''
 # creating rectangle1
-input_rect = pygame.Rect(680, 10, 100, 32)
-color_active = pygame.Color('lightskyblue3')
+input_rect = pygame.Rect(680, 60, 100, 32)
+color_active = pygame.Color('blue4')
 color_passive = pygame.Color('gray15')
 color = color_passive
 active = False
 
 # creating rectangle2
-input_rect2 = pygame.Rect(680, 60, 100, 32)
+input_rect2 = pygame.Rect(680, 110, 100, 32)
 color_active2 = pygame.Color('lightskyblue3')
 color_passive2 = pygame.Color('gray15')
 color2 = color_passive2
 active2 = False
 
 # creating rectangle3
-input_rect3 = pygame.Rect(680, 110, 100, 32)
+input_rect3 = pygame.Rect(680, 160, 100, 32)
 color_active3 = pygame.Color('lightskyblue3')
 color_passive3 = pygame.Color('gray15')
 color3 = color_passive3
@@ -123,13 +125,27 @@ while running:
     input_rect.w = max(100, text_surface.get_width() + 10)
     input_rect2.w = max(100, text_surface2.get_width() + 10)
     input_rect3.w = max(100, text_surface3.get_width() + 10)
+
     # headings
+    # inputs:
+    input_heading = my_font.render('Input:', True, (0, 0, 0))
+    screen.blit(input_heading, (650, 10))
     mass_heading = base_font.render('mass:', True, (0, 0, 0))
-    screen.blit(mass_heading, (610, 15))
+    screen.blit(mass_heading, (610, 65))
     Angle_heading = base_font.render('angle:', True, (0, 0, 0))
-    screen.blit(Angle_heading, (605, 65))
+    screen.blit(Angle_heading, (605, 115))
     Length_heading = base_font.render('length:', True, (0, 0, 0))
-    screen.blit(Length_heading, (595, 115))
+    screen.blit(Length_heading, (595, 165))
+    # Result:
+    Result_heading = my_font.render('Result:', True, (0, 0, 0))
+    screen.blit(Result_heading, (650, 215))
+    force_heading = my_font2.render('force:', True, (0, 0, 0))
+    screen.blit(force_heading, (605, 265))
+    acc_heading = my_font2.render('Acc:', True, (0, 0, 0))
+    screen.blit(acc_heading, (625, 315))
+    time_heading = my_font2.render('time:', True, (0, 0, 0))
+    screen.blit(time_heading, (620, 365))
+
     #  updating screen
     pygame.display.update()
 

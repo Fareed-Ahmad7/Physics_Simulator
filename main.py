@@ -17,6 +17,7 @@ user_text3 = ''
 force_result = ''
 acc_result = ''
 time_result = ''
+msg1 = 'value cant be zero'
 show1 = False
 show2 = False
 show3 = False
@@ -84,7 +85,9 @@ while running:
                     mass = user_text
                     # converting str into int
                     imass += int(mass)
-
+                    if imass == 0:
+                        send_message1 = my_font2.render(msg1, True, (255, 0, 0))
+                        screen.blit(send_message1, (0, 0))
                 else:
                     user_text += event.unicode
 
@@ -197,5 +200,4 @@ while running:
 
     #  updating screen
     pygame.display.update()
-
     clock.tick(60)
